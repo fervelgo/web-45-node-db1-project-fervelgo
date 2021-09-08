@@ -13,7 +13,11 @@ next(error)
 })
 
 router.get('/:id', checkAccountId, (req, res, next) => {
-   res.json(req.account)
+   try{
+      res.json(req.account)
+    } catch {
+      next()
+    }     
 })
 
 router.post('/', checkAccountPayload, checkAccountNameUnique, (req, res, next) => {
